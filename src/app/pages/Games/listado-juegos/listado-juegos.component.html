@@ -1,0 +1,92 @@
+<h1 class="text-center text-warning display-4 neon-text mt-4">🏆 Juegos Destacados 🏆</h1>
+<hr class="neon-hr">
+
+<button class="btn btn-primary mb-3" data-toggle="modal" data-target="#agregarJuego"><i class="fa fa-plus" aria-hidden="true">Agregar Juego</i></button>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let juego of juegos">
+      
+      <div class="card neon-card text-center">
+        <!-- Cuerpo de la tarjeta -->
+        <div class="card-body">
+          <h3 class="fw-bold neon-text"><i class="bi bi-controller"></i> {{ juego.name }}</h3>
+
+          <div class="d-flex flex-column align-items-center mt-3">
+            <!-- Botón "Ver más" -->
+            <button *ngIf="isAuthenticated(); else elseBlock" class="btn btn-neon btn-lg fw-bold rounded-pill px-4" [routerLink]="['/juegos', juego.id]">
+              <i class="bi bi-cash-coin"></i> Ver más
+            </button>
+          
+            <!-- Botón de eliminar debajo -->
+            <button class="btn-trash mt-3" (click)="eliminarJuego(juego.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+          
+        
+            <!-- Botón para ir al login si no está autenticado -->
+            <ng-template #elseBlock>
+              <button class="btn btn-danger btn-lg fw-bold rounded-pill px-4 mt-2" [routerLink]="['/login']">
+                <i class="bi bi-box-arrow-in-right"></i> ¡Logéate para jugar!
+              </button>
+            </ng-template>
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Agregar Usuario -->
+<div class="modal fade" id="agregarJuego" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: #181818; border: 2px solid #ffcc00; box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8); border-radius: 15px;">
+
+      <div class="modal-header" style="background: #000; border-bottom: 2px solid #ffcc00;">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #ffcc00; text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);">
+          <i class="fa fa-plus"></i> Agregar juego
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #ffcc00; font-size: 20px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <form>
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Nombre</label>
+                <input type="text" [(ngModel)]="juego.name" class="form-control" name="name" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Descripcion</label>
+                <input type="text" [(ngModel)]="juego.descripcion" class="form-control" name="descripcion" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+              <button type="button" (click)="guardar()" class="btn" style="background: linear-gradient(45deg, #ffcc00, #ff9900); color: black; font-weight: bold; text-shadow: 0px 0px 5px black; box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8); border: none; padding: 10px 20px; border-radius: 25px;">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="background: #000; border-top: 2px solid #ffcc00;">
+        <button type="button" class="btn" data-dismiss="modal" style="background: #222; color: #ffcc00; font-weight: bold; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,156 @@
+<h2 class="text-center text-warning neon-text mt-4">🎮 Historial de Sesiones</h2>
+
+
+<button class="btn btn-primary mb-3" data-toggle="modal" data-target="#agregarSesion"><i class="fa fa-plus" aria-hidden="true">Agregar Sesion</i></button>
+
+<hr class="neon-hr">
+
+<div class="container">
+  <table class="table mt-3 text-dark">
+    <thead class="bg-warning text-dark neon-table-header">
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Juego</th>
+        <th>Puntos Ganados</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sesion of sesiones" class="neon-table-row">
+        <td>{{ sesion.id }}</td>
+        <td  id="blanco" >{{ getNombreUsuario(sesion.user_id) }}</td>
+        <td class="text-success fw-bold">{{ getNombreJuego(sesion.game_id) }}</td>
+        <td id="blanco" class="text-white fw-bold">{{ sesion.puntos_ganados }}</td>
+        <td> <button class="btn-trash" (click)="eliminarSesion(sesion.id)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        <td>
+          <button class="btn-edit me-2" (click)="seleccionarSesion(sesion)" data-toggle="modal" data-target="#editarSesion">
+            <i class="fa fa-pencil"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Controles de paginación -->
+<div class="d-flex justify-content-center mt-4">
+  <button class="btn btn-neon me-2" (click)="prevPage()" [disabled]="currentPage === 1">
+    <i class="bi bi-arrow-left"></i> Anterior
+  </button>
+  <button class="btn btn-neon me-2" (click)="nextPage()" [disabled]="!hasMoreSesiones">
+    Siguiente <i class="bi bi-arrow-right"></i>
+  </button>
+</div>
+
+<div class="text-center mt-3">
+  <br>
+  <br>
+  <span class="fw-bold fs-4 neon-text">Página {{ currentPage }}</span>
+</div>
+
+
+
+
+<!-- Modal Agregar Usuario -->
+<div class="modal fade" id="agregarSesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: #181818; border: 2px solid #ffcc00; box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8); border-radius: 15px;">
+
+      <div class="modal-header" style="background: #000; border-bottom: 2px solid #ffcc00;">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #ffcc00; text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);">
+          <i class="fa fa-plus"></i> Agregar Sesion
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #ffcc00; font-size: 20px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <form>
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Usario_id</label>
+                <input type="number" [(ngModel)]="sesion.user_id" class="form-control" name="user_id" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Game_id</label>
+                <input type="number" [(ngModel)]="sesion.game_id" class="form-control" name="game_id" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Puntos Ganados</label>
+                <input type="number" [(ngModel)]="sesion.puntos_ganados" class="form-control" name="puntos_ganados" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <button type="button" (click)="guardar()" class="btn" style="background: linear-gradient(45deg, #ffcc00, #ff9900); color: black; font-weight: bold; text-shadow: 0px 0px 5px black; box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8); border: none; padding: 10px 20px; border-radius: 25px;">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="background: #000; border-top: 2px solid #ffcc00;">
+        <button type="button" class="btn" data-dismiss="modal" style="background: #222; color: #ffcc00; font-weight: bold; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar Sesión -->
+<div class="modal fade" id="editarSesion" tabindex="-1" aria-labelledby="editarSesionLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: #181818; border: 2px solid #ffcc00; box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8); border-radius: 15px;">
+
+      <div class="modal-header" style="background: #000; border-bottom: 2px solid #ffcc00;">
+        <h5 class="modal-title" id="editarSesionLabel" style="color: #ffcc00; text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);">
+          <i class="fa fa-pencil"></i> Editar Sesión
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #ffcc00; font-size: 20px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <form *ngIf="sesionSeleccionada">
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold;">Usuario ID</label>
+                <input type="number" [(ngModel)]="sesionSeleccionada.user_id" class="form-control" name="user_id" required>
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold;">Game ID</label>
+                <input type="number" [(ngModel)]="sesionSeleccionada.game_id" class="form-control" name="game_id" required>
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold;">Puntos Ganados</label>
+                <input type="number" [(ngModel)]="sesionSeleccionada.puntos_ganados" class="form-control" name="puntos_ganados" required>
+              </div>
+
+              <button type="button" (click)="editarSesion()" class="btn btn-success">
+                Guardar Cambios
+              </button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Cancelar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

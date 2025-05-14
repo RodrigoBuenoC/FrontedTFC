@@ -1,0 +1,174 @@
+
+/* Estilo para los puntos */
+.puntos {
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+   
+    padding: 10px 20px;
+    border-radius: 10px;
+    
+}
+
+
+
+
+.game-container {
+   height: 700px;
+    background-image: url('/assets/estadio2.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.goal {
+    width: 600px; /* Reducido para que encaje mejor */
+    height: 320px;
+    background-image: url('/assets/porteria-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.goalkeeper {
+    width: 100px;
+    height: 80px;
+    background-image: url('/assets/porteroo-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.5s, bottom 0.5s;
+}
+
+.ball {
+    width: 30px;
+    height: 30px;
+    background-image: url('/assets/balon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.8s ease-in-out;
+}
+
+/* Ajuste de los puntos de tiro */
+.target {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Posiciones exactas de los targets */
+.target:nth-child(1) { top: 60px; left: 15%; }  /* Izquierda alta */
+.target:nth-child(2) { top: 60px; left: 50%; transform: translateX(-50%); } /* Centro alta */
+.target:nth-child(3) { top: 60px; right: 15%; } /* Derecha alta */
+.target:nth-child(4) { bottom: 20px; left: 15%; } /* Izquierda baja */
+.target:nth-child(5) { bottom: 20px; right: 15%; } /* Derecha baja */
+
+.result {
+    font-size: 24px;
+    margin-top: 20px;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+/* Estilo para la sección de apuesta */
+label {
+    font-size: 18px;
+    color: white;
+    margin-right: 10px;
+}
+
+/* Estilo para los botones y el input */
+.apuesta-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 18px;
+    background-color: rgba(255, 204, 0, 0.8);;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  
+  input {
+    font-size: 18px;
+    text-align: center;
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  
+
+select {
+    font-size: 18px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: yellow;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+
+.close-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    border-radius: 50%;
+    width: 80px;
+    height: 50px;
+    padding: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #ff4d4d, #b30000);
+    border: 2px solid #fff;
+    color: white;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  }
+  
+  .close-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff4d4d, 0 0 20px #b30000;
+  }
+  

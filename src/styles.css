@@ -1,0 +1,8 @@
+body {
+    background: linear-gradient(135deg, #000000, #5a5a2c, #54582f);
+    background-size: cover;
+    min-height: 100vh;
+
+    font-family: 'Cinzel', serif;
+    color: white;
+}

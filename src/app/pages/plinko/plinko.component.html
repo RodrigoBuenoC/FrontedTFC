@@ -1,0 +1,20 @@
+<div class="game-container">
+
+
+  <!-- Mostrar puntos del jugador -->
+  <h2 class="text-warning text-center">{{ puntos }} ptos</h2>
+
+  <!-- Botón para jugar -->
+  <button class="btn btn-neon" (click)="dropBall()">Jugar</button>
+
+  <!-- Tablero de Plinko -->
+  <div id="board" class="board" #board></div>
+
+  <br>
+
+    <!-- Botón de regresar -->
+    <a class="close-button btn btn-danger shadow-lg" [routerLink]="'/juegos'" title="Regresar a Juegos">
+      <i class="bi bi-x-lg">Regresar</i>
+    </a>
+    
+</div>
