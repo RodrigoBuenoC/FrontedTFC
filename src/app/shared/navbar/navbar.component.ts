@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   isRegisterIn = false;
   userRole: string | null = null;
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.authState$.subscribe((isAuth) => {
@@ -28,15 +28,15 @@ export class NavbarComponent implements OnInit {
       text: 'Estás a punto de salir de tu cuenta.',
       icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#28a745', 
-      cancelButtonColor: '#007bff', 
+      confirmButtonColor: '#28a745',
+      cancelButtonColor: '#007bff',
       confirmButtonText: 'Sí, salir ',
       cancelButtonText: 'No, quedarme '
     }).then((result) => {
       if (result.isConfirmed) {
         this.authService.logout();
-        this.userRole = null; 
-  
+        this.userRole = null;
+
         Swal.fire({
           title: '¡Hasta pronto!',
           text: 'Has cerrado sesión exitosamente.',
@@ -46,5 +46,5 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-  
+
 }

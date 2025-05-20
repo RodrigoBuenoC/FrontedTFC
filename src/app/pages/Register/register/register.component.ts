@@ -28,7 +28,7 @@ export class RegisterComponent {
       return;
     }
   
-    // Validación: email simple (puedes usar regex si quieres más precisión)
+    // Validación: email simple 
     if (!this.email.includes('@') || !this.email.includes('.')) {
       Swal.fire({
         title: 'Email inválido',

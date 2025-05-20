@@ -17,6 +17,8 @@ import { RegisterComponent } from './pages/Register/register/register.component'
 import { PenaltyComponent } from './pages/Penalty/penalty/penalty.component';
 import { MisSesionesComponent } from './pages/Mis-Sesiones/mis-sesiones/mis-sesiones.component';
 import { PlinkoComponent } from './pages/plinko/plinko.component';
+import { TragaperrasComponent } from './pages/Tragaperras/tragaperras/tragaperras.component';
+import { MinasComponent } from './pages/Minas/minas/minas.component';
 
 
 
@@ -24,40 +26,42 @@ import { PlinkoComponent } from './pages/plinko/plinko.component';
 const routes: Routes = [
 
   // Ruta para el login
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
   // Ruta para la página principal
-  {path:'main',component:MainComponent},
+  { path: 'main', component: MainComponent },
 
- 
- // Rutas relacionadas con usuarios
-  {path:'usuarios' , component:UsuariosComponent},
-  {path:'listado-usuarios' , component:ListadoUsuariosComponent},
-  {path:'usuarios/:id' , component:UsuarioComponent},
+
+  // Rutas relacionadas con usuarios
+  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'listado-usuarios', component: ListadoUsuariosComponent },
+  { path: 'usuarios/:id', component: UsuarioComponent },
 
   // Rutas relacionadas con juegos
-  {path:'juegos' , component:JuegosComponent},
-  {path:'listado-juegos' , component:ListadoJuegosComponent},
-  {path:'juegos/:id' , component:JuegoComponent},
+  { path: 'juegos', component: JuegosComponent },
+  { path: 'listado-juegos', component: ListadoJuegosComponent },
+  { path: 'juegos/:id', component: JuegoComponent },
 
-  {path:'penalty', component:PenaltyComponent},
-  {path: 'plinko',component:PlinkoComponent},
+  { path: 'penalty', component: PenaltyComponent },
+  { path: 'plinko', component: PlinkoComponent },
+  { path: 'tragaperras', component: TragaperrasComponent },
+  { path: 'minas', component: MinasComponent },
 
-// Rutas relacionadas con sesiones de juego
-  {path:'sesiones',component:SesionesComponent},
-  {path:'listado-sesiones',component:ListadoSesionesComponent},
-  {path:'sesiones/:id',component:SesionComponent},
-  {path:'mis-sesiones',component:MisSesionesComponent},
-
-
-
- // Redirección por defecto a juegos si no se especifica una ruta
-  {path:'' , pathMatch:'full',redirectTo:'/juegos'},
-  {path:'**' , pathMatch:'full',redirectTo:'/juegos'},
+  // Rutas relacionadas con sesiones de juego
+  { path: 'sesiones', component: SesionesComponent },
+  { path: 'listado-sesiones', component: ListadoSesionesComponent },
+  { path: 'sesiones/:id', component: SesionComponent },
+  { path: 'mis-sesiones', component: MisSesionesComponent },
 
 
-  
+
+  // Redirección por defecto a juegos si no se especifica una ruta
+  { path: '', pathMatch: 'full', redirectTo: '/juegos' },
+  { path: '**', pathMatch: 'full', redirectTo: '/juegos' },
+
+
+
 ];
 
 @NgModule({

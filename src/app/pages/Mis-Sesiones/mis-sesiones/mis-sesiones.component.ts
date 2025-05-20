@@ -144,7 +144,7 @@ export class MisSesionesComponent implements OnInit {
     doc.setFontSize(12);
     doc.text(`Beneficio Total: ${this.totalPoints}`, 14, finalY + 10);
 
-    // Guardar el PDF
+    // Guardar el PDF sin crear ningun archivo
     doc.save('mis-sesiones.pdf');
   }
 

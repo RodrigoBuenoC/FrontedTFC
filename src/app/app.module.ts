@@ -27,6 +27,8 @@ import { RegisterComponent } from './pages/Register/register/register.component'
 import { PenaltyComponent } from './pages/Penalty/penalty/penalty.component';
 import { MisSesionesComponent } from './pages/Mis-Sesiones/mis-sesiones/mis-sesiones.component';
 import { PlinkoComponent } from './pages/plinko/plinko.component';
+import { TragaperrasComponent } from './pages/Tragaperras/tragaperras/tragaperras.component';
+import { MinasComponent } from './pages/Minas/minas/minas.component';
 
 
 
@@ -49,6 +51,8 @@ import { PlinkoComponent } from './pages/plinko/plinko.component';
     PenaltyComponent,
     MisSesionesComponent,
     PlinkoComponent,
+    TragaperrasComponent,
+    MinasComponent,
     
     
   ],

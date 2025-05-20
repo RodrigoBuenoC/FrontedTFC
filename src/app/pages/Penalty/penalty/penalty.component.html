@@ -9,7 +9,7 @@
     <option value="dificil">Difícil</option>
   </select>
 </div>
-
+<div class="penaltis-container">
 <div class="game-container">
     <h2 class="puntos">{{ puntos }} ptos</h2>
     <h1>Penalty Shoot-out</h1>
@@ -18,7 +18,7 @@
     
     <div class="goal">
         <div class="goalkeeper" #goalkeeper></div>
-        <div class="ball" #ball></div>
+        <div class="ball1" #ball></div>
 
         <div class="target" style="top: 78px; left: 110px;" (click)="tirarPenalti('izquierda-alta')"></div>
         <div class="target" style="top: 78px; left: 50%; transform: translateX(-50%);" (click)="tirarPenalti('centro-alta')"></div>
@@ -35,6 +35,7 @@
       <button (click)="ajustarApuesta(1)">+</button>
     </div>
   </div>
+</div>
 </div>
 
  <!-- Botón de regresar -->

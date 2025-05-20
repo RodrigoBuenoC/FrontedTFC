@@ -13,6 +13,11 @@ export class PenaltyComponent implements OnInit {
   puntos: number = 0;
   apuesta: number = 5; // Puntos apostados por defecto
   dificultad: string = 'facil'; // Nivel de dificultad
+
+    loseSound = new Audio("/assets/Error.mp3");
+    WinSound = new Audio("/assets/Tic.mp3");
+
+
   
   @ViewChild('goalkeeper') goalkeeper!: ElementRef;
   @ViewChild('ball') ball!: ElementRef;
@@ -101,22 +106,14 @@ export class PenaltyComponent implements OnInit {
     setTimeout(() => {
       let puntosGanados = 0;
       if (direccionJugador === direccionPortero) {
-        Swal.fire({
-          title: '¡El portero atajó el tiro!',
-          text: '¡Inténtalo de nuevo!',
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 2000
-        });
+        
+            this.loseSound.play();
+
         puntosGanados = -this.apuesta; // Puntos negativos (el jugador pierde los puntos apostados)
       } else {
-        Swal.fire({
-          title: '¡GOLAZO!',
-          text: '¡Bien hecho!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 2000
-        });
+
+        this.WinSound.play();
+        
         puntosGanados = this.apuesta * multiplicadorRecompensa;
       }
   
