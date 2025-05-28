@@ -1,0 +1,55 @@
+/* Estilo del texto con efecto neón */
+.neon-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 8px #ffcc00, 0px 0px 15px #ffcc00;
+}
+
+/* Estilo para los enlaces del Navbar */
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.neon-hover:hover {
+  color: #ffcc00 !important;
+  text-shadow: 0px 0px 8px #ffcc00, 0px 0px 15px #ffcc00;
+}
+
+/* Botón de Login con efecto Neón */
+.btn-neon {
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  color: #121212;
+  font-weight: bold;
+  border-radius: 25px;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
+}
+
+.btn-neon:hover {
+  box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.8);
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #ff9900, #ffcc00);
+}
+
+
+/* Botón de Logout con efecto Neón */
+.btn-outline-neon {
+  color: #ffcc00;
+  font-weight: bold;
+  border: 2px solid #ffcc00;
+  border-radius: 25px;
+  padding: 10px 20px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
+}
+
+.btn-outline-neon:hover {
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  color: #121212;
+  box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.8);
+  transform: scale(1.1);
+}

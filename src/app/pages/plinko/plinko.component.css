@@ -1,0 +1,123 @@
+/* Fondo del tablero */
+.board {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-top: 20px;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px solid #00ffcc; /* Borde de neón */
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+}
+
+/* Fila de pegs */
+.row {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* Pegs con efecto neón */
+.peg {
+  width: 2px;
+  height: 2px;
+  background-color: #ff00ff;
+  border-radius: 50%;
+  margin: 12px;
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Efecto cuando el peg se toca o anima */
+.peg:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 255, 1), 0 0 40px rgba(255, 0, 255, 0.8);
+  transform: scale(1.2);
+}
+
+/* Slots con fondo y bordes neón */
+.slot {
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  margin: 0 10px;
+  text-align: center;
+  color: #00ffcc;
+  line-height: 40px;
+  font-size: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.8), 0 0 18px rgba(0, 255, 204, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por encima de los slots */
+.slot:hover {
+  box-shadow: 0 0 18px rgba(0, 255, 204, 1), 0 0 40px rgba(0, 255, 204, 0.8);
+  transform: scale(1.1);
+}
+
+/* Bola con efecto neón */
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: #ff6347;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(255, 99, 71, 1), 0 0 20px rgba(255, 99, 71, 0.8);
+}
+
+/* Animación suave de la bola */
+.ball.animated {
+  animation: moveBall 2s ease-in-out infinite;
+}
+
+/* Estilo de los botones de apuesta */
+button {
+  background: linear-gradient(45deg,  #ffcc00, #ff9900);
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 99, 71, 1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 20px rgba(255, 99, 71, 1), 0 0 40px rgba(255, 99, 71, 0.8);
+  transform: scale(1.1);
+}
+
+
+.close-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  border-radius: 50%;
+  width: 80px;
+  height: 50px;
+  padding: 0;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #ffcc00, #ff9900);
+  border: 2px solid #fff;
+  color: #000;
+  text-shadow: 0 0 2px #fff, 0 0 5px #ff0, 0 0 10px #f90;
+  box-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px #ffcc00, 0 0 25px #ff9900, 0 0 35px #ff6600;
+}
+

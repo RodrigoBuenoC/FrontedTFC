@@ -1,0 +1,24 @@
+<h2 class="text-center text-warning display-5 neon-text">🏆 Ranking TOP 5</h2>
+<hr class="neon-hr">
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mb-4" *ngFor="let usuario of top5Usuarios; let i = index">
+      <div class="card neon-card text-center p-3">
+        <h4 class="text-warning fw-bold">{{ i + 1 }}º {{ usuario.name }}</h4>
+        <p class="text-warning fw-bold">{{ usuario.email }}</p>
+        <p><i class="bi bi-star-fill text-warning"></i> Puntos: {{ usuario.puntos }}</p>
+        
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="usuarioActual && posicionUsuarioActual && posicionUsuarioActual > 5" class="mt-5 text-center">
+   
+    <div class="card neon-card text-center p-3 mt-3">
+      <h4 class="text-info">{{ posicionUsuarioActual }}º {{ usuarioActual.name }}</h4>
+        <p class="text-warning fw-bold">{{ usuarioActual.email }}</p>
+      <p><i class="bi bi-star-fill text-info"></i> Puntos: {{ usuarioActual.puntos }}</p>
+    </div>
+  </div>
+</div>

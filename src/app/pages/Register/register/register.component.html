@@ -1,0 +1,30 @@
+<div class="register-container">
+  <div class="register-form">
+    <h2 class="neon-text">Registro</h2>
+    <hr class="neon-hr">
+
+    <form (submit)="onRegister()">
+      <div class="input-group">
+        <label>Alias:</label>
+        <input type="text" class="input-neon" placeholder="Alias" [(ngModel)]="name" name="name" required />
+      </div>
+
+      <div class="input-group">
+        <label>Email:</label>
+        <input type="email" class="input-neon" placeholder="Email" [(ngModel)]="email" name="email" required />
+      </div>
+
+      <div class="input-group">
+        <label>Contraseña:</label>
+        <input type="password" class="input-neon" placeholder="Contraseña" [(ngModel)]="password" name="password" required />
+      </div>
+
+      <div class="input-group">
+        <label>Confirmar Contraseña:</label>
+        <input type="password" class="input-neon"  placeholder="Contraseña" [(ngModel)]="password_confirmation" name="password_confirmation" required />
+      </div>
+
+      <button type="submit" class="btn-neon">Registrarse</button>
+    </form>
+  </div>
+</div>

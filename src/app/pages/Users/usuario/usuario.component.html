@@ -1,0 +1,33 @@
+<h2 class="text-center text-warning display-4 neon-text mt-4">👤 Usuario</h2>
+
+<!-- Loader mientras se obtiene la información -->
+<div class="d-flex justify-content-center align-items-center vh-50" *ngIf="!usuario; else divUsuario">
+    <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden"></span>
+    </div>
+</div>
+
+<!-- Información del usuario -->
+<ng-template #divUsuario>
+    <hr class="neon-hr">
+    <div class="container d-flex justify-content-center">
+        <div class="card neon-card text-center" style="max-width: 500px;">
+            
+            <div class="card-header">
+                <i class="bi bi-person-circle"></i> Información del Usuario
+            </div>
+
+            <div class="card-body">
+                <p class="text-light"><strong>ID:</strong> {{usuario.id}}</p>
+                <h2 class="fw-bold neon-text"><i class="bi bi-person"></i> {{usuario.name}}</h2>
+                <p><i class="bi bi-envelope"></i> <strong>Email:</strong> {{usuario.email}}</p>
+                <p class="fw-bold text-warning"><i class="bi bi-star-fill"></i> Puntos: {{usuario.puntos}}</p>
+
+                <button class="btn btn-outline-neon mt-3" routerLink="/usuarios">
+                    <i class="bi bi-arrow-left"></i> Regresar
+                </button>
+            </div>
+
+        </div>
+    </div>
+</ng-template>

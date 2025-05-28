@@ -1,0 +1,124 @@
+<h1 class="text-center text-warning display-4 neon-text mt-4">👥 Listado de Usuarios</h1>
+<hr class="neon-hr">
+
+<button class="btn btn-primary mb-3" data-toggle="modal" data-target="#agregarUsuario"><i class="fa fa-plus" aria-hidden="true">Agregar Usuario</i></button>
+
+<!-- Campo de búsqueda con efecto neón -->
+<div class="input-group mb-3 neon-input-container">
+  <input 
+    type="text" 
+    class="form-control neon-input" 
+    placeholder="🔍 Buscar usuario por nombre..." 
+    [(ngModel)]="filtroNombre" 
+    (input)="filtrarUsuarios()">
+</div>
+
+<div class="container">
+  <div *ngIf="usuarioSeleccionado" class="mt-4 p-3 neon-card">
+    <h3 class="text-warning">Editar Usuario</h3>
+    
+    <label class="text-light">Nombre:</label>
+    <input type="text" [(ngModel)]="usuarioSeleccionado.name" class="form-control mb-2">
+    
+    <label class="text-light">Email:</label>
+    <input type="email" [(ngModel)]="usuarioSeleccionado.email" class="form-control mb-2">
+    
+    <label class="text-light">Puntos:</label>
+    <input type="number" [(ngModel)]="usuarioSeleccionado.puntos" class="form-control mb-2">
+  
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-success" (click)="editar()">Guardar Cambios</button>
+      <button class="btn btn-danger" (click)="usuarioSeleccionado = null">Cancelar</button>
+    </div>
+    <br>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let usuario of usuariosFiltrados">
+        <div class="card neon-card text-center">
+          <div class="card-body">
+            <h4 class="fw-bold neon-text">{{ usuario.name }}</h4>
+            <p class="card-text text-light">{{ usuario.email }}</p>
+            <p class="card-text text-light">Puntos : {{ usuario.puntos }}</p>
+            <br>
+            <div class="d-flex">
+              <button class="btn-edit" (click)="seleccionarUsuario(usuario)">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="btn-trash" (click)="eliminarUsuario(usuario.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Paginación Mejorada -->
+  <div class="d-flex justify-content-center mt-4 gap-4">
+    <button class="btn-glow me-3" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+   <br>
+    <button class="btn-glow ms-3" (click)="nextPage()" [disabled]="!hasMoreUsers">Siguiente</button>
+  </div>
+
+  <div class="text-center mt-3">
+    <br>
+    <br>
+    <span class="fw-bold fs-4 neon-text">Página {{ currentPage }}</span>
+  </div>
+</div>
+
+<!-- Modal Agregar Usuario -->
+<div class="modal fade" id="agregarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: #181818; border: 2px solid #ffcc00; box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8); border-radius: 15px;">
+
+      <div class="modal-header" style="background: #000; border-bottom: 2px solid #ffcc00;">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #ffcc00; text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);">
+          <i class="fa fa-plus"></i> Agregar Usuario
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #ffcc00; font-size: 20px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <form>
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Nombre</label>
+                <input type="text" [(ngModel)]="usuario.name" class="form-control" name="name" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Email</label>
+                <input type="text" [(ngModel)]="usuario.email" class="form-control" name="email" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffcc00; font-weight: bold; text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">Puntos</label>
+                <input type="number" [(ngModel)]="usuario.puntos" class="form-control" name="puntos" required style="background: #121212; color: #ffcc00; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+              </div>
+
+              <button type="button" (click)="guardar()" class="btn" style="background: linear-gradient(45deg, #ffcc00, #ff9900); color: black; font-weight: bold; text-shadow: 0px 0px 5px black; box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8); border: none; padding: 10px 20px; border-radius: 25px;">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="background: #000; border-top: 2px solid #ffcc00;">
+        <button type="button" class="btn" data-dismiss="modal" style="background: #222; color: #ffcc00; font-weight: bold; border: 1px solid #ffcc00; box-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

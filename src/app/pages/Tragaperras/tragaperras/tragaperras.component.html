@@ -1,0 +1,50 @@
+<div class="slot-machine-container">
+  <div class="slot-machine">
+    <!-- Rejilla de rodillos -->
+    <div class="reels-grid">
+      <div 
+        class="reel" 
+        *ngFor="let cell of casillas; let i = index" 
+        [id]="'r' + i"
+        [class.win-flash]="indicesGanadores.includes(i)">
+        {{ cell }}
+      </div>
+    </div>
+
+    <!-- Apuesta y botón -->
+    <label for="betInput">Apuesta: </label>
+    <input type="number" id="betInput" [(ngModel)]="apuesta" min="1" step="1" />
+
+    <button id="spinButton" (click)="girar()" [disabled]="girarDesactivado">Girar</button>
+
+    <!-- Puntos y resultado -->
+    <p id="pointsDisplay"> Puntos: {{ puntos }}</p>
+    <p id="result">{{ mensajeResultado }}</p>
+  </div>
+
+  <!-- Tabla de pagos -->
+  <div class="payout-table">
+    <h3>Tabla de premios</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Símbolo</th>
+          <th>Descripción</th>
+          <th>Multiplicador</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let simbolo of simbolos">
+          <td class="symbol">{{ simbolo }}</td>
+          <td>{{ descripcionSimbolo(simbolo) }}</td>
+          <td>x{{ multiplicadores[simbolo] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Botón de regresar -->
+<a class="close-button btn btn-danger shadow-lg" [routerLink]="'/juegos'" title="Regresar a Juegos">
+  <i class="bi bi-x-lg">Regresar</i>
+</a>

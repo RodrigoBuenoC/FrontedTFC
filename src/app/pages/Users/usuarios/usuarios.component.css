@@ -1,0 +1,95 @@
+  
+  .neon-text {
+    text-shadow: 0px 0px 10px #ffcc00, 0px 0px 20px #ffcc00, 0px 0px 30px #ffcc00;
+  }
+
+  .neon-hr {
+    border: 2px solid #ffcc00;
+    box-shadow: 0px 0px 10px #ffcc00;
+  }
+
+  .neon-card {
+    background: #1a1a1a;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: #fff;  
+    padding: 20px;
+  }
+
+  .neon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 25px rgba(255, 204, 0, 0.8);
+  }
+
+  .card-header {
+    background: #ffcc00;
+    color: #121212;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .btn-neon, .btn-outline-neon {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 15px 25px;  
+    margin-top: 10px;   
+    transition: all 0.3s ease-in-out;
+  }
+
+  .btn-neon {
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    color: #121212;
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.8);
+    transform: scale(1.1);
+  }
+
+  .btn-outline-neon {
+    border: 2px solid #ffcc00;
+    color: #ffcc00;
+  }
+
+  .btn-outline-neon:hover {
+    background: #ffcc00;
+    color: #121212;
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8);
+  }
+
+
+  .neon-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .neon-input {
+    background-color: #1a1a1a;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    max-width: 400px;
+    outline: none;
+  }
+  
+  .neon-input::placeholder {
+    color: rgba(255, 204, 0, 0.7);
+  }
+  
+  .neon-input:focus {
+    box-shadow: 0px 0px 20px rgba(255, 204, 0, 1);
+    transform: scale(1.05);
+  }
+  

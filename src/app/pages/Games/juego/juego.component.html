@@ -1,0 +1,46 @@
+<h2 class="text-center text-warning neon-text mt-4">🎮 Juego</h2>
+
+<!-- Loader mientras se obtiene la información -->
+<div class="d-flex justify-content-center align-items-center vh-50" *ngIf="!juego; else divJuego">
+    <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden"></span>
+    </div>
+</div>
+
+<!-- Información del Juego -->
+<ng-template #divJuego>
+    <hr class="neon-hr">
+    <div class="container d-flex justify-content-center">
+        <div class="card neon-card text-center p-4" style="max-width: 500px;">
+
+            <div class="card-header text-center fw-bold">
+                <i class="bi bi-controller"></i> Información del Juego
+            </div>
+
+            <div class="card-body">
+                <h2 class="neon-text fw-bold"><i class="bi bi-joystick"></i> {{ juego.name }}</h2>
+                <p class="text-light"><i class="bi bi-info-circle"></i> {{ juego.descripcion }}</p>
+
+
+                <!-- Botón para jugar -->
+                <button class="btn btn-neon btn-lg mt-3" [routerLink]="
+        juego.id === 1 ? '/penalty' : 
+        juego.id === 2 ? '/plinko' : 
+        juego.id === 3 ? '/tragaperras' : 
+        juego.id === 4 ? '/minas' :
+        '/juegos'">
+                    <i class="bi bi-play-circle"></i> Jugar Ahora
+                </button>
+
+
+
+                <br>
+                <!-- Botón para regresar -->
+                <button class="btn btn-outline-neon mt-3" routerLink="/juegos">
+                    <i class="bi bi-arrow-left"></i> Regresar
+                </button>
+            </div>
+
+        </div>
+    </div>
+</ng-template>

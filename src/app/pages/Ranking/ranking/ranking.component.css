@@ -1,0 +1,10 @@
+.card.neon-card {
+  border: 2px solid #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  background: #111;
+  color: white;
+  transition: 0.3s;
+}
+.card.neon-card:hover {
+  transform: scale(1.02);
+}

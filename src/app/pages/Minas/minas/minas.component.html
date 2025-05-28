@@ -1,0 +1,31 @@
+<!-- Mostrar entrada de apuesta  -->
+<div *ngIf="!apuestaColocada">
+
+  <p>Tus puntos: {{ puntos }}</p>
+  <label for="apuesta">Apuesta por partida:</label>
+  <input id="apuesta" type="number" [(ngModel)]="apuesta" min="1" />
+  <button (click)="colocarApuesta()">Jugar</button>
+  <br><br>
+  
+  
+</div>
+
+<!-- Mostrar tablero solo si ya se colocó la apuesta -->
+<div *ngIf="apuestaColocada">
+     <p>Tus puntos: {{ puntos }}</p>
+  <p>Ganancia actual: ${{ gananciaActual }}</p>
+  <button (click)="cashOut()" *ngIf="!gameOver">💰 Retirar Ganancias</button>
+<button (click)="reiniciarJuego()" *ngIf="gameOver">🔄 Reiniciar</button>
+
+  <div id="board">
+    <div *ngFor="let cell of board; index as i"
+         class="cell"
+         [ngClass]="{
+           revealed: cell.revealed && !cell.mine,
+           mine: cell.revealed && cell.mine
+         }"
+         (click)="revealCell(i)">
+      {{ cell.revealed ? (cell.mine ? '💣' : '✅') : '' }}
+    </div>
+  </div>
+</div>
